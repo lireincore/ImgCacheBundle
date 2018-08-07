@@ -1,0 +1,27 @@
+{
+    "name": "lireincore/imgcache-bundle",
+    "description": "The lireincore/imgcache integration for the Symfony framework",
+    "type": "symfony-bundle",
+    "keywords": ["symfony", "bundle", "image", "cache", "preset", "thumb", "effect", "resize"],
+    "homepage": "https://github.com/lireincore/ImgCacheBundle",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/lireincore/ImgCacheBundle/issues",
+        "source": "https://github.com/lireincore/ImgCacheBundle"
+    },
+    "authors": [
+        {
+            "name": "lirein",
+            "email": "lireincore@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "^3.4|^4.0",
+        "lireincore/imgcache": "~0.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LireinCore\\ImgCacheBundle\\": "src"
+        }
+    }
+}
