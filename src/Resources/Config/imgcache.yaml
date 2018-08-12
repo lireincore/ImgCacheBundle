@@ -1,0 +1,46 @@
+imgcache:
+    driver: gmagick
+    image_class: '\Foo\Bar\MyImageClass'
+    srcdir: '/path/to/my/project/uploads'
+    destdir: '/path/to/my/project/www/thumbs'
+    webdir: '/path/to/my/project/www'
+    baseurl: 'https://www.mysite.com'
+    jpeg_quality: 80
+    png_compression_level: 8
+    png_compression_filter: 6
+    plug:
+        path: '/path/to/my/project/assets/plug.png'
+        url: 'http://placehold.it/100x100'
+        process: true
+    convert_map:
+        'gif,wbmp': png
+        '*': jpeg
+    effects_map:
+        myeffect1: '\Foo\Bar\MyEffect1'
+        myeffect2: '\Foo\Bar\MyEffect2'
+    postprocessors_map:
+        my_postprocessor1: '\Foo\Bar\MyPostProcessor1'
+        my_postprocessor2: '\Foo\Bar\MyPostProcessor2'
+    postprocessors:
+        - { type: 'jpegoptim', params: { path: '/path/to/jpegoptim', quality: 75, strip_all: false, progressive: false } }
+        - { type: 'optipng', params: { path: '/path/to/optipng', level: 5, strip_all: false } }
+    presets:
+        origin:
+            driver: gd
+            srcdir: '/path/to/my/project/backend/uploads'
+            destdir: '/path/to/my/project/backend/www/thumbs'
+            webdir: '/path/to/my/project/backend/www'
+            baseurl: 'https://admin.mysite.com'
+            jpeg_quality: 100,
+            png_compression_level: 9
+            png_compression_filter: 9
+            plug:
+                path: '/path/to/my/project/backend/assets/plug_origin.png'
+            image_class: '\Foo\Bar\MyOriginImage'
+            convert_map:
+                'xbm': png
+                'gif': jpeg
+            effects:
+                - { type: 'overlay', params: { path: '/path/to/my/project/assets/watermark.png', opacity: 80, offset_x: 'right', offset_y: 'bottom', width: '50%', height: '50%' } }
+            postprocessors:
+                - { type: 'pngquant', params: { path: '/path/to/pngquant', quality: 75 } }
