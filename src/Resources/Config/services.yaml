@@ -1,3 +1,0 @@
-services:
-  LireinCore\ImgCacheBundle\Controller\ImgCacheController:
-    autoconfigure: true

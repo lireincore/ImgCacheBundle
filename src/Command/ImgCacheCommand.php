@@ -6,14 +6,14 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use LireinCore\ImgCacheBundle\Service\ImgCacheInterface;
+use LireinCore\ImgCacheBundle\Service\ImgCache;
 
 class ImgCacheCommand extends Command
 {
     public const COMMAND_NAME = 'lireincore:imgcache:cache:clear';
 
     /**
-     * @var ImgCacheInterface
+     * @var ImgCache
      */
     protected $imgCache;
 
@@ -22,7 +22,7 @@ class ImgCacheCommand extends Command
      */
     protected $io;
 
-    public function __construct(ImgCacheInterface $imgCache)
+    public function __construct(ImgCache $imgCache)
     {
         parent::__construct(self::COMMAND_NAME);
 

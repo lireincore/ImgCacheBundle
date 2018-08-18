@@ -5,7 +5,7 @@ namespace LireinCore\ImgCacheBundle\Service;
 use LireinCore\ImgCache\ImgCache as ImgCacheService;
 use LireinCore\ImgCache\Exception\ConfigException;
 
-class ImgCache implements ImgCacheInterface
+class ImgCache
 {
     /**
      * @var ImgCacheService
@@ -19,6 +19,7 @@ class ImgCache implements ImgCacheInterface
      */
     public function __construct(array $config)
     {
+        dump($config);
         $this->imgcache = new ImgCacheService($config);
     }
 

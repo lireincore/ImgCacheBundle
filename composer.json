@@ -17,7 +17,7 @@
     ],
     "require": {
         "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
-        "lireincore/imgcache": "^0.3.1",
+        "lireincore/imgcache": "^0.3.1"
     },
     "require-dev": {
         "symfony/yaml": "^2.8 || ^3.0 || ^4.0"

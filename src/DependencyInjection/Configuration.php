@@ -12,12 +12,38 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('imgcache');
+        $rootNode = $treeBuilder->root('lireincore_imgcache');
 
         $rootNode
             ->fixXmlConfig('postprocessor', 'postprocessors')
+            ->fixXmlConfig('preset', 'presets')
+            ->validate()
+                ->always(function($v) {
+                    if (empty($v['plug'])) {
+                        unset($v['plug']);
+                    }
+                    if (empty($v['convert_map'])) {
+                        unset($v['convert_map']);
+                    }
+                    if (empty($v['effects_map'])) {
+                        unset($v['effects_map']);
+                    }
+                    if (empty($v['postprocessors_map'])) {
+                        unset($v['postprocessors_map']);
+                    }
+                    if (empty($v['postprocessors'])) {
+                        unset($v['postprocessors']);
+                    }
+                    if (empty($v['presets'])) {
+                        unset($v['presets']);
+                    }
+
+                    return $v;
+                })
+            ->end()
             ->children()
-                ->enumNode('driver')->values(ImageHelper::supportedDrivers())->end()
+                ->enumNode('driver')->values(ImageHelper::supportedDrivers())
+                    ->info('Graphic library for all presets (by default, tries to use: imagick->gd->gmagick)')->end()
                 ->scalarNode('image_class')->end()
                 ->scalarNode('srcdir')->end()
                 ->scalarNode('destdir')->isRequired()->end()
@@ -30,10 +56,12 @@ class Configuration implements ConfigurationInterface
                 ->append($this->convertMapNode())
                 ->arrayNode('effects_map')
                     ->useAttributeAsKey('name')
+                    ->normalizeKeys(false)
                     ->scalarPrototype()->end()
                 ->end()
                 ->arrayNode('postprocessors_map')
                     ->useAttributeAsKey('name')
+                    ->normalizeKeys(false)
                     ->scalarPrototype()->end()
                 ->end()
                 ->append($this->postprocessorsNode())
@@ -53,6 +81,24 @@ class Configuration implements ConfigurationInterface
             ->arrayPrototype()
                 ->fixXmlConfig('effect', 'effects')
                 ->fixXmlConfig('postprocessor', 'postprocessors')
+                ->validate()
+                    ->always(function($v) {
+                        if (empty($v['plug'])) {
+                            unset($v['plug']);
+                        }
+                        if (empty($v['convert_map'])) {
+                            unset($v['convert_map']);
+                        }
+                        if (empty($v['effects'])) {
+                            unset($v['effects']);
+                        }
+                        if (empty($v['postprocessors'])) {
+                            unset($v['postprocessors']);
+                        }
+
+                        return $v;
+                    })
+                ->end()
                 ->children()
                     ->enumNode('driver')->values(ImageHelper::supportedDrivers())->end()
                     ->scalarNode('image_class')->end()
@@ -95,6 +141,7 @@ class Configuration implements ConfigurationInterface
 
         $node
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->enumPrototype()->values(ImageHelper::supportedDestinationFormats())->end();
 
         return $node;
@@ -125,10 +172,20 @@ class Configuration implements ConfigurationInterface
                     ->ifString()
                     ->then(function ($v) { return ['type' => $v]; })
                 ->end()
+                ->validate()
+                    ->always(function($v) {
+                        if (empty($v['params'])) {
+                            unset($v['params']);
+                        }
+
+                        return $v;
+                    })
+                ->end()
                 ->children()
                     ->scalarNode('type')->isRequired()->end()
                     ->arrayNode('params')
                         ->useAttributeAsKey('name')
+                        ->normalizeKeys(false)
                         ->variablePrototype()->end()
                     ->end()
                 ->end()
