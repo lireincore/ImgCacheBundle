@@ -19,7 +19,6 @@ class ImgCache
      */
     public function __construct(array $config)
     {
-        dump($config);
         $this->imgcache = new ImgCacheService($config);
     }
 
