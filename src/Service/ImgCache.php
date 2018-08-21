@@ -10,7 +10,7 @@ class ImgCache
     /**
      * @var ImgCacheService
      */
-    protected $imgcache;
+    private $imgcache;
 
     /**
      * ImgCache constructor.
@@ -61,7 +61,7 @@ class ImgCache
      */
     public function stubUrl($preset, $absolute = false)
     {
-        return $this->stubUrl($preset, $absolute);
+        return $this->imgcache->stubUrl($preset, $absolute);
     }
 
     /**
@@ -73,7 +73,7 @@ class ImgCache
      */
     public function stubPath($preset)
     {
-        return $this->stubPath($preset);
+        return $this->imgcache->stubPath($preset);
     }
 
     /**

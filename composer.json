@@ -16,15 +16,25 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
-        "lireincore/imgcache": "^0.3.1"
+        "lireincore/imgcache": "^0.3.1",
+        "symfony/config": "^3.4 || ^4.0",
+        "symfony/http-kernel": "^3.4 || ^4.0",
+        "symfony/dependency-injection": "^3.4 || ^4.0"
     },
     "require-dev": {
-        "symfony/yaml": "^2.8 || ^3.0 || ^4.0"
+        "symfony/phpunit-bridge": "^3.4 || ^4.0"
+    },
+    "suggest": {
+        "symfony/event-dispatcher": "^3.4 || ^4.0"
     },
     "autoload": {
         "psr-4": {
             "LireinCore\\ImgCacheBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LireinCore\\ImgCacheBundle\\Tests\\": "tests"
         }
     }
 }
