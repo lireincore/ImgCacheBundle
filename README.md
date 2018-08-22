@@ -1,5 +1,6 @@
 # Image effect, thumb and cache bundle for Symfony
 
+[![Build Status](https://secure.travis-ci.org/lireincore/LireinCoreImgCacheBundle.png?branch=master)](http://travis-ci.org/lireincore/LireinCoreImgCacheBundle)
 [![Latest Stable Version](https://poser.pugx.org/lireincore/imgcache-bundle/v/stable)](https://packagist.org/packages/lireincore/imgcache-bundle)
 [![Total Downloads](https://poser.pugx.org/lireincore/imgcache-bundle/downloads)](https://packagist.org/packages/lireincore/imgcache-bundle)
 [![License](https://poser.pugx.org/lireincore/imgcache-bundle/license)](https://packagist.org/packages/lireincore/imgcache-bundle)
@@ -20,7 +21,7 @@ $ php composer.phar require lireincore/imgcache-bundle
 
 ## Usage
 
-To use this extension, you need to create the `lireincore_imgcache.yaml` file in your `config/packages` folder and paste this boilerplate:
+To use this bundle, you need to create the `lireincore_imgcache.yaml` file in your `config/packages` folder and paste this boilerplate:
 
 ```yaml
 # config/packages/lireincore_imgcache.yaml
