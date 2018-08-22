@@ -17,16 +17,6 @@ class FunctionalTest extends TestCase
         $this->assertInstanceOf(ImgCache::class, $imgCache);
     }
 
-    public function testServiceWiringWithConfiguration()
-    {
-        $kernel = new LireinCoreImgCacheTestingKernel($this->config());
-        $kernel->boot();
-        $container = $kernel->getContainer();
-
-        $imgCache = $container->get('lireincore_imgcache.service.imgcache');
-        $this->assertInstanceOf(ImgCache::class, $imgCache);
-    }
-
     protected function config()
     {
         return [

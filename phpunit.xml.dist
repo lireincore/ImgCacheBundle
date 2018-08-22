@@ -12,14 +12,19 @@
         bootstrap="./vendor/autoload.php">
 
     <testsuites>
-        <testsuite name="Test suite">
-            <directory suffix="Test.php">./tests</directory>
+        <testsuite name="LireinCoreImgCacheBundle test suite">
+            <directory suffix="Test.php">./Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src</directory>
+            <directory>./</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
         </whitelist>
     </filter>
 

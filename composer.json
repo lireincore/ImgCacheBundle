@@ -29,12 +29,13 @@
     },
     "autoload": {
         "psr-4": {
-            "LireinCore\\ImgCacheBundle\\": "src"
-        }
+            "LireinCore\\ImgCacheBundle\\": ""
+        },
+        "exclude-from-classmap": [ "/Tests/" ]
     },
     "autoload-dev": {
         "psr-4": {
-            "LireinCore\\ImgCacheBundle\\Tests\\": "tests"
+            "LireinCore\\ImgCacheBundle\\Tests\\": "/Tests/"
         }
     }
 }
