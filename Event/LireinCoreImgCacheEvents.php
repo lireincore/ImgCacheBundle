@@ -2,12 +2,14 @@
 
 namespace LireinCore\ImgCacheBundle\Event;
 
+use LireinCore\ImgCache\Event\ThumbCreatedEvent;
+
 final class LireinCoreImgCacheEvents
 {
     /**
      * Called when new thumb is created
      *
-     * @Event("LireinCore\ImgCacheBundle\Event\ThumbCreatedEvent")
+     * @Event("LireinCore\ImgCache\Event\ThumbCreatedEvent")
      */
-    const THUMB_CREATED = 'lireincore_imgcache.thumb_created';
+    public const THUMB_CREATED = ThumbCreatedEvent::NAME;
 }

@@ -7,6 +7,8 @@
 
         <service id="lireincore_imgcache.service.imgcache" class="LireinCore\ImgCacheBundle\Service\ImgCache" public="true">
             <argument />
+            <argument type="service" id="logger" on-invalid="null" />
+            <argument type="service" id="event_dispatcher" on-invalid="null" />
         </service>
 
         <service id="LireinCore\ImgCacheBundle\Service\ImgCache" alias="lireincore_imgcache.service.imgcache" public="false" />

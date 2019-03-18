@@ -2,10 +2,12 @@
 
 namespace LireinCore\ImgCacheBundle\Service;
 
+use Psr\Log\LoggerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use LireinCore\ImgCache\ImgCache as ImgCacheService;
 use LireinCore\ImgCache\Exception\ConfigException;
 
-class ImgCache
+final class ImgCache
 {
     /**
      * @var ImgCacheService
@@ -14,16 +16,23 @@ class ImgCache
 
     /**
      * ImgCache constructor.
+     *
      * @param array $config
+     * @param null|LoggerInterface $logger
+     * @param null|EventDispatcherInterface $eventDispatcher
      * @throws ConfigException
      */
-    public function __construct(array $config)
+    public function __construct(
+        array $config,
+        ?LoggerInterface $logger = null,
+        ?EventDispatcherInterface $eventDispatcher = null
+    )
     {
-        $this->imgcache = new ImgCacheService($config);
+        $this->imgcache = new ImgCacheService($config, $logger, $eventDispatcher);
     }
 
     /**
-     * @param string $srcRelPath relative path to source image
+     * @param string $srcPath absolute or relative path to source image
      * @param string|array $preset preset name or dynamic preset definition
      * @param bool $absolute
      * @param bool $useStub
@@ -32,13 +41,13 @@ class ImgCache
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
      */
-    public function url($srcRelPath, $preset, $absolute = false, $useStub = true)
+    public function url(string $srcPath, $preset, bool $absolute = false, bool $useStub = true) : string
     {
-        return $this->imgcache->url($srcRelPath, $preset, $absolute, $useStub);
+        return $this->imgcache->url($srcPath, $preset, $absolute, $useStub);
     }
 
     /**
-     * @param string $srcRelPath relative path to source image
+     * @param string $srcPath absolute or relative path to source image
      * @param string|array $preset preset name or dynamic preset definition
      * @param bool $useStub
      * @return string
@@ -46,9 +55,9 @@ class ImgCache
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
      */
-    public function path($srcRelPath, $preset, $useStub = true)
+    public function path(string $srcPath, $preset, bool $useStub = true) : string
     {
-        return $this->imgcache->path($srcRelPath, $preset, $useStub);
+        return $this->imgcache->path($srcPath, $preset, $useStub);
     }
 
     /**
@@ -59,7 +68,7 @@ class ImgCache
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
      */
-    public function stubUrl($preset, $absolute = false)
+    public function stubUrl($preset, bool $absolute = false) : string
     {
         return $this->imgcache->stubUrl($preset, $absolute);
     }
@@ -71,7 +80,7 @@ class ImgCache
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
      */
-    public function stubPath($preset)
+    public function stubPath($preset) : string
     {
         return $this->imgcache->stubPath($preset);
     }
@@ -80,7 +89,7 @@ class ImgCache
      * @param string|array|null $preset preset name or dynamic preset definition
      * @throws ConfigException
      */
-    public function clearCache($preset = null)
+    public function clearCache($preset = null) : void
     {
         $this->imgcache->clearCache($preset);
     }

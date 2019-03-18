@@ -11,7 +11,7 @@ The [lireincore/imgcache](https://github.com/lireincore/imgcache) integration fo
 
 ## Install
 
-Add the `"lireincore/imgcache-bundle": "^0.1.1"` package to your `require` section in the `composer.json` file
+Add the `"lireincore/imgcache-bundle": "^0.2"` package to your `require` section in the `composer.json` file
 
 or
 
@@ -51,4 +51,4 @@ See `lireincore/imgcache` [README.md](https://github.com/lireincore/imgcache/blo
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+This project is licensed under the MIT License - see the [License File](LICENSE) file for details
