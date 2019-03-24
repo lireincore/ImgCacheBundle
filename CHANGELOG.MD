@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.2.2 (2019-02-24)
+
+  * Update travis.yml
+
 ### 0.2.1 (2019-02-24)
 
   * Update tests
