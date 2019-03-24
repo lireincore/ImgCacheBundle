@@ -22,7 +22,8 @@
         "symfony/dependency-injection": "^3.4 || ^4.0"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^3.4 || ^4.0"
+        "phpunit/phpunit": "^7",
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "psr-4": {

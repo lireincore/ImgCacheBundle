@@ -9,7 +9,7 @@ class ImgCacheTest extends TestCase
 {
     /**
      * @expectedException \RuntimeException
-     * @expectedExceptionMessage Path to image stub is not configured
+     * @expectedExceptionMessage Stub path or url is not configured
      */
     public function testPathStubConfig()
     {

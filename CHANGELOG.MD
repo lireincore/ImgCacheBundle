@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.2.1 (2019-02-24)
+
+  * Update tests
+
 ### 0.2.0 (2019-02-18)
 
   * Added type hinting
