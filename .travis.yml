@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 7.1.3
   - 7.2
 
 sudo: false
@@ -20,11 +19,8 @@ matrix:
         # Minimum supported dependencies with the latest and oldest PHP version
         #- php: 7.2
         #  env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak_vendors"
-        #- php: 7.1.3
-        #  env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak_vendors"
 
         # Test the latest stable release
-        - php: 7.1.3
         - php: 7.2
           env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
 

@@ -3,7 +3,7 @@
 namespace LireinCore\ImgCacheBundle\Service;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use LireinCore\ImgCache\ImgCache as ImgCacheService;
 use LireinCore\ImgCache\Exception\ConfigException;
 

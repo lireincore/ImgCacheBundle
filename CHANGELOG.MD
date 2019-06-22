@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.3.0 (2019-06-22)
+
+  * Added support for PSR-14 event dispatcher
+
 ### 0.2.2 (2019-02-24)
 
   * Update travis.yml
