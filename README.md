@@ -37,13 +37,26 @@ lireincore_imgcache:
                 - 'grayscale'
 ```
 
+Add listener class and configure for event handling when thumb created
+(required `symfony/event-dispatcher: ^4.3` or another psr-14 compatible dispatcher):
+
+```yaml
+# config/services.yaml
+
+services:
+    Psr\EventDispatcher\EventDispatcherInterface: '@event_dispatcher'
+    App\Event\ThumbCreatedListener:
+        tags:
+            - { name: kernel.event_listener, event: LireinCore\ImgCache\Event\ThumbCreatedEvent, method: onThumbCreated }
+```
+
 See `lireincore/imgcache` [README.md](https://github.com/lireincore/imgcache/blob/master/README.md) for more information about the available effects and other config options.
 
 Use in your code:
 
 ```php
 $imgcache = $this->container->get('lireincore_imgcache.service.imgcache');
-//get thumb url for image '{srcdir}/blog/image.jpg' (preset 'origin')
+// get thumb url for image '{srcdir}/blog/image.jpg' (preset 'origin')
 $url = $imgcache->url('blog/image.jpg', 'origin');
 ```
 

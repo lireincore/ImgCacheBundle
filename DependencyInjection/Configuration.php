@@ -11,14 +11,14 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('lireincore_imgcache');
+        $treeBuilder = new TreeBuilder('lireincore_imgcache');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->fixXmlConfig('postprocessor', 'postprocessors')
             ->fixXmlConfig('preset', 'presets')
             ->validate()
-                ->always(function($v) {
+                ->always(static function($v) {
                     if (empty($v['plug'])) {
                         unset($v['plug']);
                     }
@@ -73,8 +73,8 @@ class Configuration implements ConfigurationInterface
 
     protected function presetsNode()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('presets');
+        $treeBuilder = new TreeBuilder('presets');
+        $node = $treeBuilder->getRootNode();
 
         $node
             ->useAttributeAsKey('name')
@@ -82,7 +82,7 @@ class Configuration implements ConfigurationInterface
                 ->fixXmlConfig('effect', 'effects')
                 ->fixXmlConfig('postprocessor', 'postprocessors')
                 ->validate()
-                    ->always(function($v) {
+                    ->always(static function($v) {
                         if (empty($v['plug'])) {
                             unset($v['plug']);
                         }
@@ -121,8 +121,8 @@ class Configuration implements ConfigurationInterface
 
     protected function plugNode()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('plug');
+        $treeBuilder = new TreeBuilder('plug');
+        $node = $treeBuilder->getRootNode();
 
         $node
             ->children()
@@ -136,8 +136,8 @@ class Configuration implements ConfigurationInterface
 
     protected function convertMapNode()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('convert_map');
+        $treeBuilder = new TreeBuilder('convert_map');
+        $node = $treeBuilder->getRootNode();
 
         $node
             ->useAttributeAsKey('name')
@@ -149,16 +149,16 @@ class Configuration implements ConfigurationInterface
 
     protected function effectsNode()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('effects');
+        $treeBuilder = new TreeBuilder('effects');
+        $node = $treeBuilder->getRootNode();
 
         return $this->configureEffectsOrPostprocessorsNode($node);
     }
 
     protected function postprocessorsNode()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('postprocessors');
+        $treeBuilder = new TreeBuilder('postprocessors');
+        $node = $treeBuilder->getRootNode();
 
         return $this->configureEffectsOrPostprocessorsNode($node);
     }
@@ -170,10 +170,10 @@ class Configuration implements ConfigurationInterface
             ->arrayPrototype()
                 ->beforeNormalization()
                     ->ifString()
-                    ->then(function ($v) { return ['type' => $v]; })
+                    ->then(static function ($v) { return ['type' => $v]; })
                 ->end()
                 ->validate()
-                    ->always(function($v) {
+                    ->always(static function($v) {
                         if (empty($v['params'])) {
                             unset($v['params']);
                         }
