@@ -1,8 +1,7 @@
 <?php
 
-namespace LireinCore\ImgCacheBundle\Tests\Service;
+namespace LireinCore\ImgCacheBundle\Tests;
 
-use LireinCore\ImgCacheBundle\Tests\LireinCoreImgCacheTestingKernel;
 use PHPUnit\Framework\TestCase;
 
 class ImgCacheTest extends TestCase

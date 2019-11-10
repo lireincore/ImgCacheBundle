@@ -11,7 +11,7 @@ The [lireincore/imgcache](https://github.com/lireincore/imgcache) integration fo
 
 ## Install
 
-Add the `"lireincore/imgcache-bundle": "^0.3"` package to your `require` section in the `composer.json` file
+Add the `"lireincore/imgcache-bundle": "^0.4"` package to your `require` section in the `composer.json` file
 
 or
 

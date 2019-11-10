@@ -2,7 +2,7 @@
 
 namespace LireinCore\ImgCacheBundle\Tests;
 
-use LireinCore\ImgCacheBundle\Service\ImgCache;
+use LireinCore\ImgCache\ImgCache;
 use PHPUnit\Framework\TestCase;
 
 class FunctionalTest extends TestCase
